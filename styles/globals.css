@@ -1,0 +1,43 @@
+:root {
+  --background: ;
+  --foreground: ;
+  --primary: ;
+  --secondary: ;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  transition: all linear 0.3s;
+}
+a {
+  color: var(--foreground);
+  &:hover {
+    opacity: 70%;
+  }
+}
+.btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 10px;
+  &:hover {
+    opacity: 70%;
+  }
+}
+.btn-primary {
+  background: var(--primary);
+}
+.btn-secondary {
+  background: var(--secondary);
+}
+.btn-primary-outline {
+  border: 1px solid var(--primary);
+}
+.btn-secondary-outline {
+  border: 1px solid var(--secondary);
+}
