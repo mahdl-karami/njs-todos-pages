@@ -1,10 +1,15 @@
 :root {
-  --background: ;
-  --foreground: ;
-  --primary: ;
-  --secondary: ;
+  --background: #e3fe90;
+  --foreground: #000000;
+  --primary: #6cd900;
+  --secondary: #38b000;
+  --danger: #ff2929;
+  --success: #00409a;
+  --warning: #ffd000;
 
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
 }
 * {
   margin: 0;
@@ -27,6 +32,7 @@ a {
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   border-radius: 10px;
+  color: var(--foreground);
   &:hover {
     opacity: 70%;
   }
