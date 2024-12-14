@@ -1,11 +1,12 @@
 :root {
-  --background: #e3fe90;
-  --foreground: #000000;
-  --primary: #6cd900;
-  --secondary: #38b000;
+  --background: #f0f0f0;
+  --foreground: #ffffff;
+  --primary: #0091ff;
+  --secondary: #3f47f4;
   --danger: #ff2929;
   --success: #00409a;
   --warning: #ffd000;
+  --text: #181818;
 
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background: var(--background);
@@ -46,10 +47,4 @@ a {
 }
 .btn-secondary {
   background: var(--secondary);
-}
-.btn-primary-outline {
-  border: 1px solid var(--primary);
-}
-.btn-secondary-outline {
-  border: 1px solid var(--secondary);
 }

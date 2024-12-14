@@ -1,8 +1,8 @@
 /* Header/Footer */
 .header,
 .footer {
-  background: var(--foreground);
-  color: var(--secondary);
+  background: var(--secondary);
+  color: var(--foreground);
 }
 .header {
   position: fixed;
@@ -11,7 +11,7 @@
 }
 .header a,
 .footer a {
-  color: var(--secondary);
+  color: var(--foreground);
 }
 .footer {
   width: 100%;
@@ -42,7 +42,7 @@
   position: absolute;
   width: 120%;
   height: 3px;
-  background: var(--secondary);
+  background: var(--foreground);
   bottom: 0;
   left: 0;
 }
@@ -53,15 +53,17 @@
 
 /* Sidebar */
 .sidebar {
-  background: var(--secondary);
+  background: var(--foreground);
   width: 10%;
   position: fixed;
   top: 70px;
   height: 100%;
   border-radius: 0 20px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-left: 1rem;
+  &,
+  & > ul > li > a {
+    color: var(--text);
+  }
 }
 .sidebar h4 {
   font-size: 1.4em;
@@ -80,4 +82,7 @@
   right: 0;
   z-index: -1;
   padding: 1rem;
+}
+.section * {
+  color: var(--text);
 }

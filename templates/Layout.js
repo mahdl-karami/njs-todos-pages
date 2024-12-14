@@ -14,7 +14,7 @@ function Layout({ children }) {
           </h1>
           <div className={styles.buttons}>
             <button className="btn btn-primary">Signup</button>
-            <button className="btn btn-secondary">Signin</button>
+            <button className="btn btn-primary">Signin</button>
           </div>
         </nav>
       </header>
