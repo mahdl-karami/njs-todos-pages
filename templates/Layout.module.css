@@ -1,0 +1,46 @@
+/* Header/Footer */
+.header,
+.footer {
+  background: var(--foreground);
+  color: var(--secondary);
+}
+.header a,
+.footer a {
+  color: var(--secondary);
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 2rem;
+}
+.footer p,
+.footer p a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 3rem 1rem;
+}
+.logo {
+  position: relative;
+}
+.logo::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 3px;
+  background: var(--secondary);
+  bottom: 0;
+  left: 0;
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+}

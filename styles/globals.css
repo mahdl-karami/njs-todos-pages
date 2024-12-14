@@ -19,6 +19,10 @@
   list-style: none;
   transition: all linear 0.3s;
 }
+body {
+  position: relative;
+  min-height: 100vh;
+}
 a {
   color: var(--foreground);
   &:hover {
