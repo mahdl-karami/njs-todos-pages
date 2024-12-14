@@ -1,9 +1,13 @@
+//? import components
 import Link from "next/link";
+//? import styles
 import styles from "./Layout.module.css";
+//? import icons
 import { RiShareBoxFill } from "react-icons/ri";
 import { FaListCheck } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
+
 function Layout({ children }) {
   return (
     <>
@@ -13,12 +17,16 @@ function Layout({ children }) {
             <Link href="/">Todo Manager</Link>
           </h1>
           <div className={styles.buttons}>
-            <button className="btn btn-primary">Signup</button>
-            <button className="btn btn-primary">Signin</button>
+            <Link href="/signup">
+              <button className="btn btn-primary">Signup</button>
+            </Link>
+            <Link href="/signin">
+              <button className="btn btn-primary">Signin</button>
+            </Link>
           </div>
         </nav>
       </header>
-      <aside className={styles.sidebar}>
+      <aside className={styles.sidebar + " box-shadow"}>
         <h4>Welcome 👋</h4>
         <ul>
           <li>
@@ -28,13 +36,13 @@ function Layout({ children }) {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/add-todo">
               <GrAddCircle />
               Add Todo
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/dashbord">
               <CgProfile />
               Profile
             </Link>

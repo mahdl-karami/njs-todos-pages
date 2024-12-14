@@ -4,9 +4,10 @@
   --primary: #0091ff;
   --secondary: #3f47f4;
   --danger: #ff8383;
-  --success: #00409a;
+  --success: #21e921;
   --warning: #ffd000;
   --text: #181818;
+  --shadow: 0 0 10px #0f0f0f34;
 
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background: var(--background);
@@ -38,6 +39,7 @@ a {
   cursor: pointer;
   border-radius: 10px;
   color: var(--foreground);
+  box-shadow: var(--shadow);
   &:hover {
     opacity: 70%;
   }
@@ -55,16 +57,21 @@ a {
 }
 input {
   width: 100%;
-  border: 1px solid var(--primary);
+  border: none;
   border-radius: 5px;
   margin: 0.2rem 0;
   padding: 0.6rem 1.2rem;
   font-size: 1.2em;
+  outline: var(--foreground);
   &:focus {
-    outline: 1px solid var(--secondary);
+    outline: 1px solid var(--primary);
   }
+  box-shadow: var(--shadow);
 }
 button[type="submit"] {
   width: 100%;
   font-size: 1.2em;
+}
+.box-shadow {
+  box-shadow: var(--shadow);
 }
