@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   if (!email || !password) return res.status(422).json({ status: "failed", error: !email && !password ? "invalidData" : !email ? "invalidEmail" : "invalidPassword", message: "please enter valid data!" });
 
   //! Check user exist
-  const user = TodoUser.findOne({ email });
+  const user = await TodoUser.findOne({ email });
   if (user) return res.status(422).json({ status: "failed", error: "userExist", message: "this email already exist, please login." });
 
   //! Create User
