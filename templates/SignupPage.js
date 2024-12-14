@@ -1,7 +1,7 @@
 //? import utils
 import FormChanger from "@/utils/FormChanger";
 //? import hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //? import icons
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 //? import styles
@@ -13,9 +13,17 @@ function SignupPage() {
     password: "",
     passVisibility: false,
   });
+  const [error, setError] = useState(0);
+  const [res, setRes] = useState(null);
 
   async function FormSubmiter(ev) {
     ev.preventDefault();
+    //! Form value check
+    if (!form.email || !form.password) {
+      setError(!form.email && !form.password ? "please enter valid data!" : !form.email ? "please enter valid email!" : "please enter valid password!");
+      return;
+    }
+    //! Send form to backend
     fetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify(form),
@@ -24,8 +32,22 @@ function SignupPage() {
       },
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => setRes(json));
   }
+
+  useEffect(() => {
+    //! Reset Error
+    setError(false);
+  }, [form.email, form.password]);
+
+  useEffect(() => {
+    //! Response checker
+    if (res?.status == "success") {
+      window.location.assign("/");
+      return;
+    }
+    setError(res?.message);
+  }, [res]);
 
   return (
     <div className={styles.box}>
@@ -38,6 +60,11 @@ function SignupPage() {
             {form.passVisibility ? <AiFillEye /> : <AiFillEyeInvisible />}
           </button>
         </div>
+        {error ? (
+          <div className={styles.error}>
+            <p>{error}</p>
+          </div>
+        ) : null}
         <button className="btn btn-primary" type="submit">
           Signup
         </button>

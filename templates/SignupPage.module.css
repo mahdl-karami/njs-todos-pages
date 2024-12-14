@@ -6,9 +6,12 @@
     font-size: 1.8em;
   }
 }
+.box form {
+  width: 400px;
+}
 .box button[type="submit"] {
   color: var(--foreground);
-  margin-top: 1rem;
+  margin: 0.5rem 0 0;
 }
 .visibilityEye {
   position: relative;
@@ -21,4 +24,11 @@
     font-size: 1.3em;
     opacity: 50%;
   }
+}
+.error {
+  background: var(--danger);
+  margin: 0.5rem 0 0;
+  border-radius: 5px;
+  padding: 0.4rem 1.2rem;
+  text-transform: capitalize;
 }
