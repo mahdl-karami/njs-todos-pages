@@ -1,0 +1,24 @@
+.box {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  & > form > h3 {
+    font-size: 1.8em;
+  }
+}
+.box button[type="submit"] {
+  color: var(--foreground);
+  margin-top: 1rem;
+}
+.visibilityEye {
+  position: relative;
+  & > button {
+    padding: 0;
+    position: absolute;
+    right: 0.5rem;
+    top: 55%;
+    transform: translate(0, -50%);
+    font-size: 1.3em;
+    opacity: 50%;
+  }
+}

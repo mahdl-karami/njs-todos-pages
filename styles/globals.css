@@ -48,3 +48,23 @@ a {
 .btn-secondary {
   background: var(--secondary);
 }
+.title {
+  font-size: 1.4em;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+input {
+  width: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  margin: 0.2rem 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2em;
+  &:focus {
+    outline: 1px solid var(--secondary);
+  }
+}
+button[type="submit"] {
+  width: 100%;
+  font-size: 1.2em;
+}

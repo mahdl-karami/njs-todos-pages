@@ -4,6 +4,9 @@ import FormChanger from "@/utils/FormChanger";
 import { useState } from "react";
 //? import icons
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+//? import styles
+import styles from "./SignupPage.module.css";
+
 function SignupPage() {
   const [form, setForm] = useState({
     email: "",
@@ -25,16 +28,19 @@ function SignupPage() {
   }
 
   return (
-    <div>
+    <div className={styles.box}>
       <form onChange={(ev) => FormChanger(ev, setForm)} onSubmit={(ev) => FormSubmiter(ev)}>
-        <input type="email" name="email" value={form.email} />
-        <div>
-          <input type={form.passVisibility ? "text" : "password"} name="password" value={form.password} />
-          <button type="button" onClick={() => setForm((prevS) => ({ ...prevS, ["passVisibility"]: !prevS.passVisibility }))}>
+        <h3 className="title">Create new Account</h3>
+        <input placeholder="Email" type="email" name="email" value={form.email} />
+        <div className={styles.visibilityEye}>
+          <input placeholder="Password" type={form.passVisibility ? "text" : "password"} name="password" value={form.password} />
+          <button className="btn" type="button" onClick={() => setForm((prevS) => ({ ...prevS, ["passVisibility"]: !prevS.passVisibility }))}>
             {form.passVisibility ? <AiFillEye /> : <AiFillEyeInvisible />}
           </button>
         </div>
-        <button type="submit">Signup</button>
+        <button className="btn btn-primary" type="submit">
+          Signup
+        </button>
       </form>
     </div>
   );
