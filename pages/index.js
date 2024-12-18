@@ -1,3 +1,7 @@
+//? import next-auth modules
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
+//? import hooks
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -20,3 +24,20 @@ function index() {
 }
 
 export default index;
+
+export async function getServerSideProps({ req, res }) {
+  const session = await getServerSession(req, res, authOptions);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      data: "",
+    },
+  };
+}
