@@ -9,7 +9,7 @@ import styles from "./SignupPage.module.css";
 //? import modules
 import { signIn } from "next-auth/react";
 
-function SignupPage() {
+function SigninPage() {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,13 +25,10 @@ function SignupPage() {
       setError(!form.email && !form.password ? "please enter valid data!" : !form.email ? "please enter valid email!" : "please enter valid password!");
       return;
     }
-    //! Send form to backend
-    fetch("/api/auth/signup", {
+    await fetch("/api/auth/signin", {
       method: "POST",
       body: JSON.stringify(form),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((json) => setRes(json));
@@ -54,7 +51,7 @@ function SignupPage() {
   return (
     <div className={styles.box}>
       <form onChange={(ev) => FormChanger(ev, setForm)} onSubmit={(ev) => FormSubmiter(ev)}>
-        <h3 className="title">Create new Account</h3>
+        <h3 className="title">Login to your Account</h3>
         <input placeholder="Email" type="email" name="email" value={form.email} />
         <div className={styles.visibilityEye}>
           <input placeholder="Password" type={form.passVisibility ? "text" : "password"} name="password" value={form.password} />
@@ -68,11 +65,11 @@ function SignupPage() {
           </div>
         ) : null}
         <button className="btn btn-primary" type="submit">
-          Signup
+          Login With Email
         </button>
       </form>
     </div>
   );
 }
 
-export default SignupPage;
+export default SigninPage;
