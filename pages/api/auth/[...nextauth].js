@@ -13,11 +13,6 @@ export const authOptions = {
       },
     }),
   ],
-  callbacks: {
-    async signIn() {
-      return "/";
-    },
-  },
 };
 
 export default NextAuth(authOptions);
