@@ -7,8 +7,13 @@ import { RiShareBoxFill } from "react-icons/ri";
 import { FaListCheck } from "react-icons/fa6";
 import { GrAddCircle } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
+//? import next-auth modules
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 function Layout({ children }) {
+  const { status } = useSession();
+  console.log(status);
   return (
     <>
       <header className={styles.header}>
@@ -16,14 +21,20 @@ function Layout({ children }) {
           <h1 className={styles.logo}>
             <Link href="/">Todo Manager</Link>
           </h1>
-          <div className={styles.buttons}>
-            <Link href="/signup">
-              <button className="btn btn-primary">Signup</button>
-            </Link>
-            <Link href="/signin">
-              <button className="btn btn-primary">Signin</button>
-            </Link>
-          </div>
+          {status == "authenticated" ? (
+            <button className="btn btn-primary" onClick={signOut}>
+              Signout
+            </button>
+          ) : (
+            <div className={styles.buttons}>
+              <Link href="/signup">
+                <button className="btn btn-primary">Signup</button>
+              </Link>
+              <Link href="/signin">
+                <button className="btn btn-primary">Signin</button>
+              </Link>
+            </div>
+          )}
         </nav>
       </header>
       <aside className={styles.sidebar + " box-shadow"}>
