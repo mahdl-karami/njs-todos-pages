@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-function index() {
+function Index() {
   const { status } = useSession();
   const router = useRouter();
 
@@ -23,7 +23,7 @@ function index() {
   return <></>;
 }
 
-export default index;
+export default Index;
 
 export async function getServerSideProps({ req, res }) {
   const session = await getServerSession(req, res, authOptions);
