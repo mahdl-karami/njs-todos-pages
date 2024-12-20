@@ -50,6 +50,13 @@ a {
 .btn-secondary {
   background: var(--secondary);
 }
+.btn-github {
+  color: var(--foreground) !important;
+  margin: 0.5rem 0 0;
+  width: 100%;
+  font-size: 1.1em;
+  background: var(--text);
+}
 .title {
   font-size: 1.4em;
   font-weight: 400;

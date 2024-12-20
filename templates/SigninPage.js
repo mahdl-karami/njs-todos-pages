@@ -8,6 +8,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "./SignupPage.module.css";
 //? import modules
 import { signIn } from "next-auth/react";
+import GithubP from "@/components/providers/GithubP";
 
 function SigninPage() {
   const [form, setForm] = useState({
@@ -67,6 +68,7 @@ function SigninPage() {
         <button className="btn btn-primary" type="submit">
           Login With Email
         </button>
+        <GithubP action="Login" />
       </form>
     </div>
   );

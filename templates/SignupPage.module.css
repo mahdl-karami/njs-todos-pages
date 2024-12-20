@@ -9,7 +9,7 @@
 .box form {
   width: 400px;
 }
-.box button[type="submit"] {
+.box button[type="submit"]{
   color: var(--foreground);
   margin: 0.5rem 0 0;
 }
