@@ -57,6 +57,12 @@ a {
   font-size: 1.1em;
   background: var(--text);
 }
+.btn-sub {
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: 1.1em;
+  color: var(--foreground) !important;
+}
 .title {
   font-size: 1.4em;
   font-weight: 400;
