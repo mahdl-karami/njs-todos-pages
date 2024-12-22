@@ -26,7 +26,7 @@ export default async function handler(req, res) {
   const user = await TodoUser.findOne({ email });
   //! Edit User
   try {
-    if (email !== newEmail) user.email = newEmail;
+    if (newEmail) user.email = newEmail;
     if (firstName) user.firstName = firstName;
     if (lastName) user.lastName = lastName;
     user.save();

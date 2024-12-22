@@ -1,5 +1,6 @@
 import FormChanger from "@/utils/FormChanger";
 import { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
 
 function DashbordPage({ user, error }) {
   const { email, firstName, lastName } = JSON.parse(user);
@@ -8,6 +9,7 @@ function DashbordPage({ user, error }) {
     firstName: firstName,
     lastName: lastName,
   });
+  const [res, setRes] = useState(null);
 
   async function subHandler(ev) {
     ev.preventDefault();
@@ -24,8 +26,18 @@ function DashbordPage({ user, error }) {
       },
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => {
+        console.log(json);
+        setRes(json);
+      });
   }
+  useEffect(() => {
+    //! Response checker
+    if (res?.status == "success") {
+      signIn("credentials", { email: form.email });
+      return;
+    }
+  }, [res]);
 
   return (
     <form onChange={(ev) => FormChanger(ev, setForm)} onSubmit={(ev) => subHandler(ev)}>
