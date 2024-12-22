@@ -10,7 +10,7 @@ function Dashbord({ user, error }) {
 
 export async function getServerSideProps({ req, res }) {
   const session = await getServerSession(req, res, authOptions);
-  const email = session.user.email;
+  const email = session?.user?.email;
   //! Authentication
   if (!session) {
     return {
