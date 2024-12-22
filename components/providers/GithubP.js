@@ -1,13 +1,10 @@
+//? import next-auth
 import { signIn } from "next-auth/react";
-import React from "react";
 
-function GithubP({ action }) {
-  function githublogin() {
-    signIn("github");
-  }
+function GithubP({ action /* Login/Signup */ }) {
   return (
-    <button type="button" className="btn btn-github" onClick={githublogin}>
-      {action} With Github
+    <button type="button" className="btn btn-github" onClick={() => signIn("github")}>
+      {action} With GitHub
     </button>
   );
 }

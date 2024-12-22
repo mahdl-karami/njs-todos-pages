@@ -13,6 +13,7 @@
   background: var(--background);
   color: var(--foreground);
 }
+/* global elements */
 * {
   margin: 0;
   padding: 0;
@@ -31,6 +32,24 @@ a {
     opacity: 70%;
   }
 }
+input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  margin: 0.2rem 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2em;
+  outline: var(--foreground);
+  &:focus {
+    outline: 1px solid var(--primary);
+  }
+  box-shadow: var(--shadow);
+}
+button[type="submit"] {
+  width: 100%;
+  font-size: 1.2em;
+}
+/* global classes */
 .btn {
   border: none;
   outline: none;
@@ -67,23 +86,6 @@ a {
   font-size: 1.4em;
   font-weight: 400;
   margin: 0 0 1rem;
-}
-input {
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  margin: 0.2rem 0;
-  padding: 0.6rem 1.2rem;
-  font-size: 1.2em;
-  outline: var(--foreground);
-  &:focus {
-    outline: 1px solid var(--primary);
-  }
-  box-shadow: var(--shadow);
-}
-button[type="submit"] {
-  width: 100%;
-  font-size: 1.2em;
 }
 .box-shadow {
   box-shadow: var(--shadow);

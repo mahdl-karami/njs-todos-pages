@@ -13,7 +13,6 @@ import { signOut } from "next-auth/react";
 
 function Layout({ children }) {
   const { status } = useSession();
-  console.log(status);
   return (
     <>
       <header className={styles.header}>

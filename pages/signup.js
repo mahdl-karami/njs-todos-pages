@@ -1,18 +1,28 @@
 import SignupPage from "@/templates/SignupPage";
-//? import hooks
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+//? next-auth imports
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 function Signup() {
-  const { status } = useSession();
-  const router = useRouter();
+  return <SignupPage />;
+}
 
-  useEffect(() => {
-    if (status == "authenticated") router.push("/");
-  }, [status]);
-
-  if (status == "unauthenticated") return <SignupPage />;
+export async function getServerSideProps({ req, res }) {
+  const session = await getServerSession(req, res, authOptions);
+  //! authentication
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      data: "",
+    },
+  };
 }
 
 export default Signup;

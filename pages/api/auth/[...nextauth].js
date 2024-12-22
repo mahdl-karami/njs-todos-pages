@@ -8,7 +8,7 @@ export const authOptions = {
   },
   providers: [
     CredentialsProvider({
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email } = credentials;
         return { email };
       },

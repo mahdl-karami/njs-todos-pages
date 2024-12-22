@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 //? import styles
 import styles from "./SignupPage.module.css";
-//? import modules
+//? import next-auth modules
 import { signIn } from "next-auth/react";
 import GithubP from "@/components/providers/GithubP";
 
@@ -21,11 +21,12 @@ function SigninPage() {
 
   async function FormSubmiter(ev) {
     ev.preventDefault();
-    //! Form value check
     if (!form.email || !form.password) {
+      //! Form value check
       setError(!form.email && !form.password ? "please enter valid data!" : !form.email ? "please enter valid email!" : "please enter valid password!");
       return;
     }
+    //! Send form to backend
     await fetch("/api/auth/signin", {
       method: "POST",
       body: JSON.stringify(form),

@@ -1,14 +1,18 @@
-import FormChanger from "@/utils/FormChanger";
+//? import hooks
 import { useEffect, useState } from "react";
+//? import functions
+import FormChanger from "@/utils/FormChanger";
 import { signIn } from "next-auth/react";
 
 function DashbordPage({ user, error }) {
+  //! destructure information from database response
   const { email, firstName, lastName } = JSON.parse(user);
   const [form, setForm] = useState({
     email: email,
     firstName: firstName,
     lastName: lastName,
   });
+  //! edita api response
   const [res, setRes] = useState(null);
 
   async function subHandler(ev) {

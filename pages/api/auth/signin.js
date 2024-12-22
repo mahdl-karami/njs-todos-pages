@@ -1,9 +1,14 @@
+//? database imports
 import TodoUser from "@/models/userModel";
 import ConnectToDB from "@/utils/ConnectToDB";
-import { signIn } from "next-auth/react";
 
 export default async function handler(req, res) {
-  if (req.method != "POST") return;
+  if (req.method != "POST") return res.status(405).json({ message: "Method not allowed" });
+
+  //! Data validation
+  const { email, password } = req.body;
+  if (!email || !password) return res.status(422).json({ status: "failed", error: !email && !password ? "invalidData" : !email ? "invalidEmail" : "invalidPassword", message: "please enter valid data!" });
+
   //! Database connection
   try {
     await ConnectToDB();
@@ -11,10 +16,6 @@ export default async function handler(req, res) {
     console.log("Can't Connect to database! error : %s", error);
     return res.status(500).json({ status: "failed", error: "database", message: "can't connect to database!" });
   }
-
-  //! Data validation
-  const { email, password } = req.body;
-  if (!email || !password) return res.status(422).json({ status: "failed", error: !email && !password ? "invalidData" : !email ? "invalidEmail" : "invalidPassword", message: "please enter valid data!" });
 
   //! Check user exist
   const user = await TodoUser.findOne({ email });
