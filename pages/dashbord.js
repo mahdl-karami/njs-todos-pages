@@ -41,8 +41,8 @@ export async function getServerSideProps({ req, res }) {
   const user = await GetUserFromDB(email);
   return {
     props: {
-      user: user ? JSON.stringify(user) : { email: undefined },
-      error: user ? false : "userNotFound",
+      user: JSON.stringify(user),
+      error: false,
     },
   };
 }
