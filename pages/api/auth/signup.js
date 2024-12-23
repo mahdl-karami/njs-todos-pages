@@ -1,5 +1,6 @@
 //? database imports
 import TodoUser from "@/models/userModel";
+import { hashPassword } from "@/utils/BcriptJS";
 import ConnectToDB from "@/utils/ConnectToDB";
 
 export default async function handler(req, res) {
@@ -22,8 +23,9 @@ export default async function handler(req, res) {
   if (user) return res.status(422).json({ status: "failed", error: "userExist", message: "this email already exist, please login." });
 
   //! Create User
+  const hashedPass = await hashPassword(password);
   try {
-    await TodoUser.create({ email, password });
+    await TodoUser.create({ email, password: hashedPass });
     return res.status(201).json({ status: "success", error: false, message: "user successfully created.", data: { email } });
   } catch (error) {
     console.log("can't create user! error : %s", error);

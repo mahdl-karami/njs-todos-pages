@@ -1,5 +1,6 @@
 //? database imports
 import TodoUser from "@/models/userModel";
+import { verifyPassword } from "@/utils/BcriptJS";
 import ConnectToDB from "@/utils/ConnectToDB";
 
 export default async function handler(req, res) {
@@ -22,7 +23,7 @@ export default async function handler(req, res) {
   if (!user) return res.status(404).json({ status: "failed", error: "userNotExist", message: "Please signup first!" });
 
   //! Check password
-  const isValid = user.password == password;
+  const isValid = await verifyPassword(password, user.password);
   if (!isValid) return res.status(401).json({ status: "failed", error: "passwordIncorrect", message: "email or password is incorrect!" });
 
   //! Login
